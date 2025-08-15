@@ -76,6 +76,7 @@
     <div class="popup-content">
         <h2>Set Target Battery Percentage</h2>
         <p id="currentBatteryText">Current Battery: --%</p>
+        <p id="chargerPluggedIn">Not Charging</p>
         <input type="number" id="targetInput" placeholder="e.g. 85" min="1" max="100" />
         <p id="errorMsg" class="error hidden">Error message here</p>
         <div style="margin-top: 15px;">
@@ -129,6 +130,8 @@
             currentBatteryLevel = Math.round(battery.level * 100);
             document.getElementById("currentBatteryText").textContent =
             `Current Battery: ${currentBatteryLevel}%`;
+
+            document.getElementById('chargerPluggedIn').textContent = battery.charging ? 'Charging...' : 'Not Charging';
 
             if(targetLevel){
                 document.getElementById("closeBtn").classList.remove("hidden");
